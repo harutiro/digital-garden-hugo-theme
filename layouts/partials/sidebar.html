@@ -68,6 +68,13 @@
         <span>{{- partial "icon/emailIcon.html" . -}}</span>
         {{ else if eq .Name "RSS" }}
         <span>{{- partial "icon/rssfeedIcon.html" . -}}</span>
+        {{ else }}
+          {{ $icon := resources.Get (printf "icons/%s.svg" .Params.icon) }}
+          {{ if $icon }}
+            <img src="{{ $icon.Permalink }}" alt="{{ .Name }}" class="w-4 h-4" />
+          {{ else }}
+            <span>{{ .Name }}</span>
+          {{ end }}
         {{ end }}
       </a>
     </li>
