@@ -31,6 +31,13 @@
             {{ if .description }}
               <p class="text-slate-400 dark:text-slate-500">{{ .description }}</p>
             {{ end }}
+
+            {{ if .date }}
+              <p class="text-slate-400 dark:text-slate-500 text-xs mt-1">
+                {{ print .date }}
+              </p>
+            {{ end }}
+
             <!-- タグが配列であった場合も対応してください -->
             {{ if .tags }}
               <div class="gap-1.5 mt-2">
