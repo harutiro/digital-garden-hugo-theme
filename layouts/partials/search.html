@@ -17,8 +17,13 @@
         Array.from(articles).filter(article => {
           const title = article.querySelector('h3')
           if (!title) return false;
+          const content = article.querySelector('div')
+          if (!content) return false;
 
-          return title.textContent.toLowerCase().includes(value.toLowerCase())
+          const isContentCheck = content.textContent.toLowerCase().includes(value.toLowerCase())
+          const isTitleCheck = title.textContent.toLowerCase().includes(value.toLowerCase())
+
+          return isContentCheck || isTitleCheck
         }).forEach(article => article.classList.remove('hidden'))
       }
     })
