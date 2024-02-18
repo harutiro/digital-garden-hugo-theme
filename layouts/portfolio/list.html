@@ -27,11 +27,11 @@
         {{ with .Params.icons }}
         <div class="flex gap-2.5 mt-2">
           {{ range . }}
-            <!-- 最初に/があればimgタグで表示する -->
-            {{ if (eq (string (index . 0)) "47") }}
-              <img src="{{ . }}" alt="{{ $title }}" style="object-fit: cover; width: 60px; height: 60px;" />
-            {{ else }}
+            <!-- 最初にlがあればimgタグで表示する -->
+            {{ if (eq (substr . 0 1) "l") }}
               <i class="text-7xl {{ . }}"></i>
+            {{ else }}
+              <img src="{{ . }}" alt="{{ $title }}" style="object-fit: cover; width: 60px; height: 60px;" />
             {{ end }}
           {{ end }}
         </div>
