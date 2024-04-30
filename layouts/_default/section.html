@@ -1,0 +1,26 @@
+{{ define "main" }}
+
+{{ $permalink := .RelPermalink }}
+{{$Section := .Site.GetPage "section" .Section }}
+
+
+<div class="h-screen overflow-y-auto pb-6 w-full">
+    <article class="px-6 pt-20 pb-10 md:max-w-xl xl:max-w-4xl 2xl:max-w-7xl mx-auto prose dark:prose-invert h-fit">
+        {{ $title := .Params.title }}
+        <h1 class="!mb-2">{{ $title }}</h1>
+        {{ if .Date }}
+        <p class="text-sm text-slate-500 !mb-8">{{ .Date.Format "January 2, 2006" }}</p>
+        {{ end }}
+
+        {{ with .Params.images }}
+        {{- range first 1 . }}
+        <img class="rounded max-w-full w-full mb-4" src="{{ . }}" alt="{{ $title }}" />
+        {{ end -}}
+        {{ end }}
+
+        {{ .Content }}
+    </article>    
+
+</div>
+
+{{ end }}
